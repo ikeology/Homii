@@ -3,13 +3,20 @@
 </script>
 
 <div class="page">
-	<h1>Congratulations on Your Graduation!</h1>
+	<h1>Congratulations Isaiah on Your Graduation! We love to see it.</h1>
 	<p>
 		Visit
 		<a href="https://www.uchicago.edu" target="_blank" rel="noopener noreferrer">
 			the University of Chicago homepage
 		</a>
 		to celebrate your next chapter.
+	</p>
+	<p>
+		<img
+			class="character-img"
+			src="https://static.wikia.nocookie.net/yasuke/images/c/c2/Yasuke.png"
+			alt="Yasuke"
+		/>
 	</p>
 </div>
 
@@ -30,5 +37,11 @@
 	a {
 		color: white;
 		text-decoration: underline;
+	}
+
+	.character-img {
+		mix-blend-mode: multiply;
+		max-width: 300px;
+		margin-top: 1rem;
 	}
 </style>
