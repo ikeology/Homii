@@ -1,5 +1,5 @@
 <script>
-	// placeholder
+	import { Button } from '$lib/components/ui/button/index';
 </script>
 
 <div class="page">
@@ -11,6 +11,7 @@
 		</a>
 		to celebrate your next chapter.
 	</p>
+	<br /><Button>buttontonowhere</Button>
 	<p>
 		<img
 			class="character-img"
