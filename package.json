@@ -49,6 +49,7 @@
 		]
 	},
 	"dependencies": {
-		"@digitalculture/ochre-sdk": "^0.7.21"
+		"@digitalculture/ochre-sdk": "^0.7.21",
+		"svelte-maplibre": "^1.0.0"
 	}
 }
