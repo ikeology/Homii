@@ -1,3 +1,16 @@
+<!-- 
+Hi Professor Miller,
+
+I ran into a few issues with this assignment and would really appreciate any pointers. I used AI to assist with styling, and I referenced the class slides for the other components.
+
+I'm having trouble with object types — one of them keeps returning "[object Object]" — and although I believe my routing is set up correctly (based on your Vercel example), the pages don’t seem to be rendering as expected.
+
+I’m submitting what I have, but please let me know if there’s an opportunity to resubmit with the missing or corrected components.
+
+Best,  
+Isaiah
+-->
+
 <script lang="ts">
 	import * as Table from '$lib/components/ui/table/index.js';
 	import { getPropertyByLabel, getUniquePropertyLabels } from '@digitalculture/ochre-sdk';
@@ -40,10 +53,10 @@
 				{#each setItems as item}
 					<Table.Row>
 						<Table.Cell>{item.identification.label}</Table.Cell>
-						{#each propertyLabels as propertyLabel}
-							<Table.Cell>{getPropertyByLabel(item.properties, propertyLabel)}</Table.Cell>
+
+						{#each propertyLabels as label}
+							<Table.Cell>{getPropertyByLabel(item.properties, label)}</Table.Cell>
 						{/each}
-						<Table.Cell>{item.identification.label}</Table.Cell>
 					</Table.Row>
 				{/each}
 			</Table.Body>
