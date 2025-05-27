@@ -1,44 +1,52 @@
 <script lang="ts">
-	import * as Accordion from '$lib/components/ui/accordion/index.js';
 	import * as Table from '$lib/components/ui/table/index.js';
+	import { getPropertyByLabel, getUniquePropertyLabels } from '@digitalculture/ochre-sdk';
 	const { data } = $props();
 	const setItems = data.set.items;
+	const propertyLabels = getUniquePropertyLabels(data.set.items[0]!.properties);
 </script>
 
-<Table.Root>
-	<Table.Caption>A list of your recent invoices.</Table.Caption>
-	<Table.Header>
-		<Table.Row>
-			<Table.Head class="w-[100px]">Invoice</Table.Head>
-			<Table.Head>Status</Table.Head>
-			<Table.Head>Method</Table.Head>
-			<Table.Head class="text-right">Amount</Table.Head>
-		</Table.Row>
-	</Table.Header>
-	<Table.Body>
-		<Table.Row>
-			<Table.Cell class="font-medium">INV001</Table.Cell>
-			<Table.Cell>Paid</Table.Cell>
-			<Table.Cell>Credit Card</Table.Cell>
-			<Table.Cell class="text-right">$250.00</Table.Cell>
-		</Table.Row>
-	</Table.Body>
-</Table.Root>
+<div class="page-style">
+	<div class="table-style">
+		<Table.Root>
+			<Table.Caption>My OCHRE Items</Table.Caption>
+			<Table.Header>
+				<Table.Row>
+					<Table.Head class="w-[100px]">Name</Table.Head>
+					{#each propertyLabels as property}
+						<Table.Head>{property}</Table.Head>
+					{/each}
+				</Table.Row>
+			</Table.Header>
+			<Table.Body>
+				{#each setItems as item}
+					<Table.Row>
+						<Table.Cell>{item.identification.label}</Table.Cell>
+						{#each item.properties as property}
+							<Table.Cell>{getPropertyByLabel(item.properties, property.label)}</Table.Cell>
+						{/each}
+						<Table.Cell>{item.identification.label}</Table.Cell>
+					</Table.Row>
+				{/each}
+			</Table.Body>
+		</Table.Root>
+	</div>
+</div>
 
 <style>
-	/* .page-container {
+	.page-style {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		min-height: 100vh;
 		color: white;
-		background-color: gray;
+		background-color: white;
 		padding: 2rem;
 	}
 
-	.table-wrapper {
+	.table-style {
 		width: 100%;
 		max-width: 700px;
-		color: white;
-	} */
+		color: black;
+	}
 </style>
