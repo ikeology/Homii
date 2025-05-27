@@ -9,7 +9,7 @@
 		: [];
 </script>
 
-<div class="container">
+<div class="map-style">
 	<MapLibre
 		zoom={4}
 		center={[33.9292, 36.0369]}
@@ -66,5 +66,18 @@
 		width: 100%;
 		max-width: 700px;
 		color: black;
+	}
+
+	.map-style {
+		margin: 2rem auto;
+		max-width: 90%;
+		width: 100%;
+		height: 400px;
+		align-items: center;
+		justify-content: center;
+		border: 2px solid #2f4f4f;
+		border-radius: 12px;
+		overflow: hidden;
+		position: relative;
 	}
 </style>

@@ -1,48 +1,83 @@
-<script>
-	import { Button } from '$lib/components/ui/button/index';
+<script lang="ts">
+	import * as Table from '$lib/components/ui/table/index.js';
+	import { getPropertyByLabel, getUniquePropertyLabels } from '@digitalculture/ochre-sdk';
+	import { MapLibre, DefaultMarker } from 'svelte-maplibre';
+	const { data } = $props();
+	const setItems = data.set.items;
+	const propertyLabels = data.set.items.length
+		? getUniquePropertyLabels(data.set.items[0]!.properties)
+		: [];
 </script>
 
-<div class="page">
-	<h1>Congratulations Isaiah on Your Graduation! We love to see it.</h1>
-	<p>
-		Visit
-		<a href="https://www.uchicago.edu" target="_blank" rel="noopener noreferrer">
-			the University of Chicago homepage
-		</a>
-		to celebrate your next chapter.
-	</p>
-	<br /><Button>buttontonowhere</Button>
-	<p>
-		<img
-			class="character-img"
-			src="https://static.wikia.nocookie.net/yasuke/images/c/c2/Yasuke.png"
-			alt="Yasuke"
-		/>
-	</p>
+<div class="map-style">
+	<MapLibre
+		zoom={4}
+		center={[33.9292, 36.0369]}
+		class="h-[400px]"
+		style="https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json"
+	>
+		{#each setItems as item}
+			{#if item.coordinates}
+				<DefaultMarker lngLat={[item.coordinates.longitude, item.coordinates.latitude]} />
+			{/if}
+		{/each}
+	</MapLibre>
+</div>
+
+<div class="page-style">
+	<div class="table-style">
+		<Table.Root>
+			<Table.Caption>My OCHRE Items</Table.Caption>
+			<Table.Header>
+				<Table.Row>
+					<Table.Head class="w-[100px]">Name</Table.Head>
+					{#each propertyLabels as property}
+						<Table.Head>{property}</Table.Head>
+					{/each}
+				</Table.Row>
+			</Table.Header>
+			<Table.Body>
+				{#each setItems as item}
+					<Table.Row>
+						<Table.Cell>{item.identification.label}</Table.Cell>
+						{#each propertyLabels as propertyLabel}
+							<Table.Cell>{getPropertyByLabel(item.properties, propertyLabel)}</Table.Cell>
+						{/each}
+						<Table.Cell>{item.identification.label}</Table.Cell>
+					</Table.Row>
+				{/each}
+			</Table.Body>
+		</Table.Root>
+	</div>
 </div>
 
 <style>
-	.page {
-		background-color: maroon;
-		color: white;
-		font-family: sans-serif;
-		padding: 2rem;
+	.page-style {
 		display: flex;
-		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		min-height: 100vh;
+		color: white;
+		background-color: white;
+		padding: 2rem;
+	}
+
+	.table-style {
+		width: 100%;
+		max-width: 700px;
+		color: black;
+	}
+
+	.map-style {
+		margin: 2rem auto;
+		max-width: 90%;
+		width: 100%;
+		height: 400px;
 		align-items: center;
 		justify-content: center;
-		height: 100vh;
-		text-align: center;
-	}
-
-	a {
-		color: white;
-		text-decoration: underline;
-	}
-
-	.character-img {
-		mix-blend-mode: multiply;
-		max-width: 300px;
-		margin-top: 1rem;
+		border: 2px solid #2f4f4f;
+		border-radius: 12px;
+		overflow: hidden;
+		position: relative;
 	}
 </style>

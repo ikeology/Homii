@@ -1,12 +1,11 @@
 import { fetchItem } from '@digitalculture/ochre-sdk';
-export async function load() {
-	const { error, item: set } = await fetchItem(
-		'240e6e06-9d05-4210-aa83-f4190639886d',
-		'set',
-		'spatialUnit'
-	);
+
+export async function load({ params }: { params: { uuid: string } }) {
+	const { error, item } = await fetchItem(params.uuid, 'spatialUnit');
+
 	if (error !== null) {
 		throw new Error('Response failed!');
 	}
-	return { set };
+
+	return { item };
 }

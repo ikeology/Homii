@@ -1,17 +1,16 @@
 <script>
-	let { slugs } = $props();
+	let { slug } = $props();
 </script>
 
 <div class="page-container">
 	<h1>Welcome to the OCHRE API Viewer</h1>
 	<p>
-		This is the landing page. Click the link below or enter a UUID in the URL to view an item's
+		This is simply a landing page. Click the link below or enter a UUID in the URL to view items
 		data.
 	</p>
-	<a href="/ochreapi/8824bf5e-152c-48af-b198-ef6888cc530f">View Example Item</a>
+	<a href={`/ochreapi/${slug}`}>View Item</a>
 </div>
 
-<!-- src/routes/ochreapi/+page.svelte -->
 <style>
 	.page-container {
 		display: flex;
