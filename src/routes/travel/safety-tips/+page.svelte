@@ -1,39 +1,62 @@
 <script lang="ts">
 	import HomiiLogo from '$lib/components/ui/logo/HomiiLogo.svelte';
 
-	const siteTitle = 'Homii';
-	const mainHeading = 'Belong Anywhere';
+	const pageTitle = 'Safety Tips';
+	const mainHeading = 'Stay Safe, Explore Freely';
 	const subHeading =
-		'Redefining global experiences for digital nomads, slow travelers, and expats. Find your community, safely.';
-	const callToActionText = 'Join Homii';
+		'Your well-being is our priority. Learn how Homii helps you navigate new places with confidence.';
+	const callToActionText = 'Explore Resources';
 
-	const problemStatement =
-		'Digital nomads, slow travelers, and expats deserve safe, reliable experiences and recommendations from trusted sources. Local businesses want to connect directly with new regulars. Creators need a digital space to host their followers and build community.';
-	const solutionIntro =
-		'Homii is where logistics meet belonging. We’re building the infrastructure for identity-aware travel planning, city-specific guides, trusted local business reviews, and real-time connections.';
-	const featuresHeading = 'More Than Just Travel';
-	const feature1 = {
-		title: 'Identity-Aware Connections',
+	const section1Heading = "Homii's Approach to Safety";
+	const section1Paragraph1 =
+		"At Homii, we believe that true belonging starts with feeling secure. We've designed our platform with multiple layers of safety in mind, from verified profiles to community-driven insights, ensuring you have the tools and information to make informed decisions.";
+	const section1Paragraph2 =
+		"Our goal is to empower you with knowledge and resources, fostering a trusted environment where you can connect, explore, and live without undue worry. Your safety is a shared responsibility, and we're here to support you every step of the way.";
+
+	const tipsHeading = 'Essential Safety Tips for Travelers';
+	const tip1 = {
+		title: 'Trust Your Instincts',
 		description:
-			'Create profiles reflecting who you are (LGBTQ+, Black, Muslim, solo female, etc.) and get curated insights from shared experiences.',
-		icon: '👥'
+			'If a situation feels off, it probably is. Prioritize your gut feeling and remove yourself from uncomfortable situations.',
+		icon: '💡'
 	};
-	const feature2 = {
-		title: 'Trusted Local Guides',
+	const tip2 = {
+		title: 'Share Your Itinerary',
 		description:
-			'Discover housing, events, visa info, coworking spots, and more, all reviewed by a community you trust.',
+			'Always let a trusted friend or family member know your travel plans, accommodations, and expected return dates.',
 		icon: '📍'
 	};
-	const feature3 = {
-		title: 'Empowering Local Businesses & Communities',
+	const tip3 = {
+		title: 'Secure Your Valuables',
 		description:
-			'Local businesses gain visibility, and community groups can host events and welcome newcomers with dedicated tools.',
-		icon: '🤝'
+			'Use hotel safes, keep important documents secure, and be aware of your surroundings, especially in crowded areas.',
+		icon: '🔒'
 	};
-	const missionStatement =
-		'The travel industry has spent decades optimizing for booking. Homii is optimizing for belonging. We’re not just building a marketplace; we’re building the system people didn’t know they needed—but won’t travel without again.';
-	const launchCities =
-		'Launching first in high-growth cities like Hanoi, Medellín, and Bangkok, where travelers seek trusted connections from day one.';
+	const tip4 = {
+		title: 'Local Emergency Contacts',
+		description:
+			"Familiarize yourself with local emergency numbers (police, ambulance) and your country's embassy or consulate.",
+		icon: '🚨'
+	};
+	const tip5 = {
+		title: 'Stay Connected',
+		description:
+			'Ensure your phone is charged, and consider a local SIM card or eSIM for reliable communication and data access.',
+		icon: '📱'
+	};
+	const tip6 = {
+		title: 'Research Local Customs',
+		description:
+			'Understanding local norms and traditions can help you avoid misunderstandings and show respect.',
+		icon: '🌍'
+	};
+
+	const communitySafetyHeading = 'Community Guidelines & Reporting';
+	const communitySafetyParagraph =
+		'Homii thrives on trust and mutual respect. We have strict community guidelines to ensure a safe environment for all members. If you encounter any behavior that violates these guidelines, please report it immediately. Our moderation team is dedicated to reviewing reports and taking appropriate action to maintain a positive and secure community space.';
+
+	const additionalResources =
+		'For additional safety information and travel advisories, consult official government travel websites and local authorities.';
 </script>
 
 <div class="landing-page-container">
@@ -64,43 +87,56 @@
 	</div>
 
 	<section class="content-section">
-		<h2>Why Homii?</h2>
+		<h2>{section1Heading}</h2>
 		<p class="problem-statement">
-			{problemStatement}
+			{section1Paragraph1}
 		</p>
 		<p class="solution-intro">
-			{solutionIntro}
+			{section1Paragraph2}
 		</p>
 	</section>
 
 	<section class="content-section features">
-		<h2>{featuresHeading}</h2>
+		<h2>{tipsHeading}</h2>
 		<div class="feature-grid">
 			<div class="feature-card">
-				<span class="feature-icon">{feature1.icon}</span>
-				<h3>{feature1.title}</h3>
-				<p>{feature1.description}</p>
+				<span class="feature-icon">{tip1.icon}</span>
+				<h3>{tip1.title}</h3>
+				<p>{tip1.description}</p>
 			</div>
 			<div class="feature-card">
-				<span class="feature-icon">{feature2.icon}</span>
-				<h3>{feature2.title}</h3>
-				<p>{feature2.description}</p>
+				<span class="feature-icon">{tip2.icon}</span>
+				<h3>{tip2.title}</h3>
+				<p>{tip2.description}</p>
 			</div>
 			<div class="feature-card">
-				<span class="feature-icon">{feature3.icon}</span>
-				<h3>{feature3.title}</h3>
-				<p>{feature3.description}</p>
+				<span class="feature-icon">{tip3.icon}</span>
+				<h3>{tip3.title}</h3>
+				<p>{tip3.description}</p>
+			</div>
+			<div class="feature-card">
+				<span class="feature-icon">{tip4.icon}</span>
+				<h3>{tip4.title}</h3>
+				<p>{tip4.description}</p>
+			</div>
+			<div class="feature-card">
+				<span class="feature-icon">{tip5.icon}</span>
+				<h3>{tip5.title}</h3>
+				<p>{tip5.description}</p>
+			</div>
+			<div class="feature-card">
+				<span class="feature-icon">{tip6.icon}</span>
+				<h3>{tip6.title}</h3>
+				<p>{tip6.description}</p>
 			</div>
 		</div>
 	</section>
 
 	<section class="content-section">
-		<h2>Our Mission</h2>
-		<p>{missionStatement}</p>
-		<p class="launch-cities">{launchCities}</p>
-		<button class="cta-button">
-			{callToActionText}
-		</button>
+		<h2>{communitySafetyHeading}</h2>
+		<p>{communitySafetyParagraph}</p>
+		<p class="launch-cities">{additionalResources}</p>
+		<button class="cta-button secondary-cta"> Report an Issue </button>
 	</section>
 </div>
 
@@ -178,9 +214,8 @@
 	}
 
 	.site-logo-wrapper {
-		/* New wrapper for the logo component */
-		text-decoration: none; /* Remove underline from the anchor */
-		display: inline-block; /* Ensure it takes up minimal space */
+		text-decoration: none;
+		display: inline-block;
 	}
 
 	.main-nav ul {
@@ -273,6 +308,14 @@
 	.cta-button:hover {
 		background-color: var(--homii-warm-orange);
 		transform: translateY(-2px);
+	}
+
+	.secondary-cta {
+		background-color: var(--homii-dark-brown);
+	}
+
+	.secondary-cta:hover {
+		background-color: oklch(0.2 0 0);
 	}
 
 	/* Content Section Styles */
@@ -384,7 +427,6 @@
 			height: 7rem;
 		}
 		.site-logo-wrapper {
-			/* Adjust for stacked header */
 			margin-bottom: 0.5rem;
 		}
 

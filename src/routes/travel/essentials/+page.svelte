@@ -1,39 +1,70 @@
 <script lang="ts">
 	import HomiiLogo from '$lib/components/ui/logo/HomiiLogo.svelte';
+	import * as Table from '$lib/components/ui/table/index.js';
+	import { getPropertyByLabel, getUniquePropertyLabels } from '@digitalculture/ochre-sdk';
+	import { MapLibre, DefaultMarker } from 'svelte-maplibre';
 
-	const siteTitle = 'Homii';
-	const mainHeading = 'Belong Anywhere';
+	// Keep your API/map specific variables
+	const { data } = $props();
+	const setItems = data.set.items;
+	const propertyLabels = data.set.items.length
+		? getUniquePropertyLabels(data.set.items[0]!.properties)
+		: [];
+
+	// Page-specific content for Essentials
+	const pageTitle = 'Travel Essentials';
+	const mainHeading = 'Your Go-To Guide for Seamless Travel';
 	const subHeading =
-		'Redefining global experiences for digital nomads, slow travelers, and expats. Find your community, safely.';
-	const callToActionText = 'Join Homii';
+		'Everything you need to know, from packing smart to staying connected, ensuring your journey is effortless.';
+	const callToActionText = 'Get Started';
 
-	const problemStatement =
-		'Digital nomads, slow travelers, and expats deserve safe, reliable experiences and recommendations from trusted sources. Local businesses want to connect directly with new regulars. Creators need a digital space to host their followers and build community.';
-	const solutionIntro =
-		'Homii is where logistics meet belonging. We’re building the infrastructure for identity-aware travel planning, city-specific guides, trusted local business reviews, and real-time connections.';
-	const featuresHeading = 'More Than Just Travel';
-	const feature1 = {
-		title: 'Identity-Aware Connections',
+	const introHeading = 'Navigating New Horizons with Ease';
+	const introParagraph1 =
+		'Preparing for a trip can be overwhelming, but with Homii, you have a curated resource for all your travel essentials. We focus on practical advice and reliable information to help you manage logistics, so you can focus on the experience.';
+	const introParagraph2 =
+		'From visa requirements to local transportation tips, our Essentials section is designed to equip you with the fundamental knowledge for a smooth transition into any new city or country.';
+
+	const essentialsHeading = 'Key Travel Essentials';
+	const essential1 = {
+		title: 'Packing Smart',
 		description:
-			'Create profiles reflecting who you are (LGBTQ+, Black, Muslim, solo female, etc.) and get curated insights from shared experiences.',
-		icon: '👥'
+			'Tips for efficient packing, essential items, and adapting your wardrobe to different climates and cultures.',
+		icon: '🎒'
 	};
-	const feature2 = {
-		title: 'Trusted Local Guides',
+	const essential2 = {
+		title: 'Connectivity Abroad',
 		description:
-			'Discover housing, events, visa info, coworking spots, and more, all reviewed by a community you trust.',
-		icon: '📍'
+			"Options for staying online: eSIMs, local SIM cards, and reliable Wi-Fi hotspots, ensuring you're always connected.",
+		icon: '📶'
 	};
-	const feature3 = {
-		title: 'Empowering Local Businesses & Communities',
+	const essential3 = {
+		title: 'Local Transportation',
 		description:
-			'Local businesses gain visibility, and community groups can host events and welcome newcomers with dedicated tools.',
+			'Guides to public transport, ride-sharing apps, and navigating local travel networks in your destination.',
+		icon: '🚗'
+	};
+	const essential4 = {
+		title: 'Health & Wellness',
+		description:
+			'Information on travel insurance, local medical facilities, and maintaining your well-being on the go.',
+		icon: '❤️'
+	};
+	const essential5 = {
+		title: 'Banking & Currency',
+		description:
+			'Advice on managing money, currency exchange, international banking, and secure payment methods.',
+		icon: '💸'
+	};
+	const essential6 = {
+		title: 'Cultural Etiquette',
+		description:
+			'Insights into local customs, social norms, and respectful interactions to enhance your experience.',
 		icon: '🤝'
 	};
-	const missionStatement =
-		'The travel industry has spent decades optimizing for booking. Homii is optimizing for belonging. We’re not just building a marketplace; we’re building the system people didn’t know they needed—but won’t travel without again.';
-	const launchCities =
-		'Launching first in high-growth cities like Hanoi, Medellín, and Bangkok, where travelers seek trusted connections from day one.';
+
+	const additionalInfoHeading = 'Deep Dive into Specifics';
+	const additionalInfoParagraph =
+		"Beyond these core essentials, our community shares in-depth guides and recommendations on specific topics. Whether it's finding the best local coffee shop with reliable Wi-Fi or understanding the nuances of apartment hunting, Homii has you covered.";
 </script>
 
 <div class="landing-page-container">
@@ -64,43 +95,107 @@
 	</div>
 
 	<section class="content-section">
-		<h2>Why Homii?</h2>
+		<h2>{introHeading}</h2>
 		<p class="problem-statement">
-			{problemStatement}
+			{introParagraph1}
 		</p>
 		<p class="solution-intro">
-			{solutionIntro}
+			{introParagraph2}
 		</p>
 	</section>
 
 	<section class="content-section features">
-		<h2>{featuresHeading}</h2>
+		<h2>{essentialsHeading}</h2>
 		<div class="feature-grid">
 			<div class="feature-card">
-				<span class="feature-icon">{feature1.icon}</span>
-				<h3>{feature1.title}</h3>
-				<p>{feature1.description}</p>
+				<span class="feature-icon">{essential1.icon}</span>
+				<h3>{essential1.title}</h3>
+				<p>{essential1.description}</p>
 			</div>
 			<div class="feature-card">
-				<span class="feature-icon">{feature2.icon}</span>
-				<h3>{feature2.title}</h3>
-				<p>{feature2.description}</p>
+				<span class="feature-icon">{essential2.icon}</span>
+				<h3>{essential2.title}</h3>
+				<p>{essential2.description}</p>
 			</div>
 			<div class="feature-card">
-				<span class="feature-icon">{feature3.icon}</span>
-				<h3>{feature3.title}</h3>
-				<p>{feature3.description}</p>
+				<span class="feature-icon">{essential3.icon}</span>
+				<h3>{essential3.title}</h3>
+				<p>{essential3.description}</p>
+			</div>
+			<div class="feature-card">
+				<span class="feature-icon">{essential4.icon}</span>
+				<h3>{essential4.title}</h3>
+				<p>{essential4.description}</p>
+			</div>
+			<div class="feature-card">
+				<span class="feature-icon">{essential5.icon}</span>
+				<h3>{essential5.title}</h3>
+				<p>{essential5.description}</p>
+			</div>
+			<div class="feature-card">
+				<span class="feature-icon">{essential6.icon}</span>
+				<h3>{essential6.title}</h3>
+				<p>{essential6.description}</p>
 			</div>
 		</div>
 	</section>
 
 	<section class="content-section">
-		<h2>Our Mission</h2>
-		<p>{missionStatement}</p>
-		<p class="launch-cities">{launchCities}</p>
-		<button class="cta-button">
-			{callToActionText}
-		</button>
+		<h2>Local Insights (Placeholder Data)</h2>
+		<p class="problem-statement">
+			This section uses placeholder data to demonstrate how Homii might integrate local information,
+			such as interesting places or community recommendations, to help you get started in a new
+			location.
+		</p>
+		<div class="map-style">
+			<MapLibre
+				zoom={4}
+				center={[33.9292, 36.0369]}
+				class="h-[400px]"
+				style="https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json"
+			>
+				{#each setItems as item}
+					{#if item.coordinates}
+						<DefaultMarker lngLat={[item.coordinates.longitude, item.coordinates.latitude]} />
+					{/if}
+				{/each}
+			</MapLibre>
+		</div>
+
+		<div class="table-style">
+			<Table.Root>
+				<Table.Caption>My OCHRE Items (Placeholder Table)</Table.Caption>
+				<Table.Header>
+					<Table.Row>
+						<Table.Head class="w-[100px]">Name</Table.Head>
+						{#each propertyLabels as property}
+							<Table.Head>{property}</Table.Head>
+						{/each}
+					</Table.Row>
+				</Table.Header>
+				<Table.Body>
+					{#each setItems as item}
+						{#if item.identification?.label}
+							<Table.Row>
+								<Table.Cell>{item.identification.label}</Table.Cell>
+								{#each propertyLabels as label}
+									<Table.Cell>{getPropertyByLabel(item.properties, label)}</Table.Cell>
+								{/each}
+							</Table.Row>
+						{/if}
+					{/each}
+				</Table.Body>
+			</Table.Root>
+		</div>
+	</section>
+
+	<section class="content-section">
+		<h2>Ready for Your Next Adventure?</h2>
+		<p>
+			With Homii's essential guides, you're always prepared. Let us help you unlock a world of
+			seamless travel and meaningful connections.
+		</p>
+		<button class="cta-button secondary-cta"> Join the Homii Community </button>
 	</section>
 </div>
 
@@ -178,9 +273,8 @@
 	}
 
 	.site-logo-wrapper {
-		/* New wrapper for the logo component */
-		text-decoration: none; /* Remove underline from the anchor */
-		display: inline-block; /* Ensure it takes up minimal space */
+		text-decoration: none;
+		display: inline-block;
 	}
 
 	.main-nav ul {
@@ -275,6 +369,14 @@
 		transform: translateY(-2px);
 	}
 
+	.secondary-cta {
+		background-color: var(--homii-dark-brown);
+	}
+
+	.secondary-cta:hover {
+		background-color: oklch(0.2 0 0);
+	}
+
 	/* Content Section Styles */
 	.content-section {
 		max-width: 900px;
@@ -302,7 +404,7 @@
 		color: var(--foreground);
 	}
 
-	/* Features Section Specific Styles */
+	/* Features Section Specific Styles (reused for Essentials) */
 	.features {
 		background-color: var(--muted);
 		padding: 4rem 2rem;
@@ -357,15 +459,70 @@
 	}
 
 	.launch-cities {
+		/* Reused for general italic text */
 		font-style: italic;
 		margin-top: 1.5rem;
 		color: var(--muted-foreground);
 	}
 
+	/* Map and Table Specific Styles (from original code) */
+	.map-style {
+		margin: 2rem auto; /* Adjusted to keep it centered and spaced */
+		max-width: 90%;
+		width: 100%;
+		height: 400px;
+		align-items: center;
+		justify-content: center;
+		border: 2px solid var(--homii-dark-brown); /* Using a brand color */
+		border-radius: var(--radius);
+		overflow: hidden;
+		position: relative;
+	}
+
+	.table-style {
+		width: 100%;
+		max-width: 700px;
+		color: var(--foreground); /* Use foreground color for text */
+		margin: 2rem auto; /* Center the table */
+		text-align: left; /* Align table content to left for readability */
+	}
+
+	/* Override Table.Root background to match page background */
+	:global(.table-style .TableRoot) {
+		background-color: var(--background);
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+	}
+	/* Override Table.Header and Table.Row colors for better contrast */
+	:global(.table-style .TableHeader) {
+		background-color: var(--accent); /* Light background for header */
+		color: var(--foreground);
+	}
+	:global(.table-style .TableRow) {
+		border-bottom: 1px solid var(--border);
+	}
+	:global(.table-style .TableHead) {
+		padding: 1rem;
+		font-weight: var(--font-weight-medium);
+		color: var(--foreground);
+	}
+	:global(.table-style .TableCell) {
+		padding: 1rem;
+		color: var(--foreground);
+	}
+	:global(.table-style .TableCaption) {
+		caption-side: top; /* Position caption at top */
+		padding: 1rem 0;
+		font-size: 1.2rem;
+		font-weight: var(--font-weight-medium);
+		color: var(--foreground);
+		text-align: center;
+	}
+
 	/* Responsive Adjustments */
 	@media (max-width: 1024px) {
 		.feature-grid {
-			grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+			grid-template-columns: repeat(2, 1fr);
 		}
 	}
 
@@ -384,7 +541,6 @@
 			height: 7rem;
 		}
 		.site-logo-wrapper {
-			/* Adjust for stacked header */
 			margin-bottom: 0.5rem;
 		}
 
@@ -421,7 +577,7 @@
 		}
 
 		.feature-grid {
-			grid-template-columns: 1fr; /* 1 column on mobile */
+			grid-template-columns: 1fr;
 		}
 
 		.features {
