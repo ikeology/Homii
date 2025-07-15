@@ -1,7 +1,4 @@
-<!-- 
-
-New init for Homii project 
-Hi Professor Miller,
+<!-- New init for Homii project 
 
 I ran into a few issues with this assignment and would really appreciate any pointers. I used AI to assist with styling, and I referenced the class slides for the other components.
 
