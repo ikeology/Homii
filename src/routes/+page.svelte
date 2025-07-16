@@ -105,8 +105,6 @@
 </div>
 
 <style>
-	/* Removed :root variables and applied colors directly */
-
 	/* Global styles */
 	:global(body) {
 		margin: 0;
@@ -149,6 +147,13 @@
 	.site-logo-wrapper {
 		text-decoration: none;
 		display: inline-block;
+		/* --- CRITICAL ADDITION FOR LOGO VISIBILITY --- */
+		color: #ffeee6; /* This sets the fill/stroke color for SVG logos or text color for text-based logos */
+		/* If your logo is an SVG, this color property will typically apply to its paths/shapes. */
+		/* You might also explicitly set the size here if your HomiiLogo component doesn't fully manage it: */
+		/* width: 120px; */
+		/* height: auto; */
+		/* ------------------------------------------- */
 	}
 
 	.main-nav ul {
@@ -383,7 +388,7 @@
 
 		.problem-statement,
 		.solution-intro {
-			font-size: 1rem;
+			font-size: 1.1rem;
 			margin-bottom: 0.8rem;
 		}
 
