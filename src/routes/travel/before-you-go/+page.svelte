@@ -43,7 +43,7 @@
 		</nav>
 	</header>
 
-	<div class="page-container">
+	<div class="page-content-wrapper">
 		<h1>{pageTitle}</h1>
 		<p>
 			{introText}
@@ -65,51 +65,27 @@
 </div>
 
 <style>
-	/* New Color Palette Variables - Copied from your home page */
-	:root {
-		--font-size: 12px; /* Changed base font size */
-		--background: #ffffff;
-		--foreground: oklch(0.145 0 0); /* Near black */
-		--primary: #030213; /* Very dark blue/black */
-		--primary-foreground: oklch(1 0 0); /* White */
-		--secondary: oklch(0.95 0.0058 264.53); /* Light bluish grey */
-		--secondary-foreground: #030213;
-		--muted: #ececf0; /* Light grey */
-		--muted-foreground: #717182; /* Medium grey */
-		--accent: #e9ebef; /* Very light grey */
-		--accent-foreground: #030213;
-		--destructive: #d4183d; /* Red */
-		--destructive-foreground: #ffffff;
-		--border: rgba(0, 0, 0, 0.1);
-		--input: transparent;
-		--input-background: #f3f3f5;
-		--switch-background: #cbced4;
-		--font-weight-medium: 500;
-		--font-weight-normal: 400;
-		--ring: oklch(0.708 0 0); /* Medium grey */
-		--radius: 0.625rem;
+	/* Explicit Colors - Removed CSS variables */
 
-		/* Homii Brand Colors - Adjusted to new values */
-		--homii-burnt-orange: #cc5500;
-		--homii-dark-brown: #4a2c2a;
-		--homii-light-peach: #ffeee6;
-		--homii-cream: #fff8f0;
-		--homii-warm-orange: #e67e22;
-		--homii-connection: #f39c12;
-		--homii-midnight-blue: #191970; /* Added Midnight Blue */
-	}
+	/* Homii Brand Colors (defined here for clarity, but used directly below) */
+	/* --homii-burnt-orange: #cc5500; */
+	/* --homii-dark-brown: #4a2c2a; */
+	/* --homii-light-peach: #ffeee6; */
+	/* --homii-cream: #fff8f0; */
+	/* --homii-warm-orange: #e67e22; */
+	/* --homii-connection: #f39c12; */
+	/* --homii-midnight-blue: #191970; */
 
-	/* Global styles - ensure these are applied globally, e.g., in app.css or layout.svelte */
+	/* Global styles */
 	:global(body) {
 		margin: 0;
 		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 		line-height: 1.6;
-		font-size: var(--font-size); /* Uses new base font size */
-		color: var(--foreground);
-		background-color: var(--background);
+		font-size: 12px; /* Set directly */
+		color: #030213; /* Near black foreground */
+		background-color: #ffeee6; /* Homii light peach background for the entire page */
 	}
 
-	/* Styles for the overall page wrapper, copied from home page */
 	.landing-page-container {
 		display: flex;
 		flex-direction: column;
@@ -119,7 +95,7 @@
 		box-sizing: border-box;
 	}
 
-	/* Sticky Header Styles - Copied from home page */
+	/* Sticky Header Styles */
 	.site-header {
 		position: sticky;
 		top: 0;
@@ -128,7 +104,7 @@
 		justify-content: space-between;
 		align-items: center;
 		padding: 1rem 2rem;
-		background-color: var(--primary); /* Dark header */
+		background-color: #030213; /* Very dark blue/black primary */
 		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 		z-index: 100;
 		box-sizing: border-box;
@@ -153,48 +129,49 @@
 	}
 
 	.main-nav li a {
-		color: var(--primary-foreground); /* White text for header links */
+		color: #ffeee6; /* Light peach primary-foreground */
 		text-decoration: none;
-		font-weight: var(--font-weight-normal);
+		font-weight: 400;
 		transition: color 0.3s ease;
 	}
 
 	.main-nav li a:hover {
-		color: var(--homii-light-peach); /* Light peach on hover */
+		color: #fff8f0; /* Homii cream on hover for navigation */
 	}
 
 	.nav-cta {
-		background-color: var(--homii-burnt-orange);
-		color: var(--white) !important; /* Ensure white text */
+		background-color: #cc5500; /* Homii burnt-orange */
+		color: white !important; /* Ensure white text */
 		padding: 0.6rem 1.2rem;
-		border-radius: var(--radius);
+		border-radius: 0.625rem;
 		transition: background-color 0.3s ease;
 	}
 
 	.nav-cta:hover {
-		background-color: var(--homii-warm-orange);
-		color: var(--white) !important;
+		background-color: #e67e22; /* Homii warm-orange */
+		color: white !important;
 	}
 
-	/* Specific styles for this page's content area */
-	.page-container {
+	/* New wrapper for page content to replace the old .page-container for background purposes */
+	.page-content-wrapper {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		/* min-height needs to account for the header's height if it's not a full-page background color */
 		min-height: calc(100vh - 4.5rem); /* Adjust min-height to account for header */
-		background-color: var(--homii-burnt-orange); /* Burnt orange background */
-		color: var(--homii-midnight-blue); /* Text color changed to Midnight Blue */
+		/* Removed background-color here as it's now on the global body */
+		color: #191970; /* Midnight Blue text */
 		text-align: center;
 		padding: 2rem;
 		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-		flex-grow: 1; /* Allow it to take up available space */
-		width: 100%; /* Ensure it spans full width */
-		box-sizing: border-box; /* Include padding in width */
+		flex-grow: 1;
+		width: 100%;
+		max-width: 900px; /* Constrain content width */
+		box-sizing: border-box;
 	}
 
 	h1 {
-		/* Adjusted font size relative to the new base font size (12px) */
-		font-size: 2rem; /* Adjusted from 2.5rem */
+		font-size: 2rem;
 		margin-bottom: 1rem;
 		line-height: 1.2;
 		max-width: 800px;
@@ -210,7 +187,7 @@
 
 	.tip-list li {
 		margin: 0.8rem 0;
-		font-size: 1rem; /* Adjusted from 1.15rem */
+		font-size: 1rem;
 		line-height: 1.5;
 		display: flex;
 		align-items: flex-start;
@@ -218,8 +195,7 @@
 	}
 
 	.icon {
-		/* Renamed from .star-icon to .icon for generic use */
-		font-size: 1.2em; /* Slightly larger than text for visibility */
+		font-size: 1.2em;
 		line-height: 1.5;
 		flex-shrink: 0;
 	}
@@ -227,11 +203,11 @@
 	p {
 		margin-top: 1.5rem;
 		max-width: 700px;
-		font-size: 1rem; /* Adjusted from 1.1rem */
+		font-size: 1rem;
 		line-height: 1.6;
 	}
 
-	/* Responsive Adjustments (Copied from home page, adjusted for this page) */
+	/* Responsive Adjustments */
 	@media (max-width: 768px) {
 		.site-header {
 			flex-direction: column;
@@ -245,7 +221,7 @@
 		}
 
 		h1 {
-			font-size: 1.8rem; /* Adjusted */
+			font-size: 1.8rem;
 			white-space: normal;
 		}
 
@@ -255,11 +231,11 @@
 		}
 
 		.tip-list li {
-			font-size: 0.9rem; /* Adjusted */
+			font-size: 0.9rem;
 		}
 
 		p {
-			font-size: 0.9rem; /* Adjusted */
+			font-size: 0.9rem;
 			padding: 0 1rem;
 		}
 	}
@@ -272,7 +248,7 @@
 			padding: 0.5rem 1rem;
 		}
 		h1 {
-			font-size: 1.6rem; /* Adjusted */
+			font-size: 1.6rem;
 		}
 	}
 </style>

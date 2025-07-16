@@ -105,47 +105,16 @@
 </div>
 
 <style>
-	/* New Color Palette Variables */
-	:root {
-		--font-size: 14px;
-		--background: #ffffff;
-		--foreground: oklch(0.145 0 0); /* Near black */
-		--primary: #030213; /* Very dark blue/black */
-		--primary-foreground: oklch(1 0 0); /* White */
-		--secondary: oklch(0.95 0.0058 264.53); /* Light bluish grey */
-		--secondary-foreground: #030213;
-		--muted: #ececf0; /* Light grey */
-		--muted-foreground: #717182; /* Medium grey */
-		--accent: #e9ebef; /* Very light grey */
-		--accent-foreground: #030213;
-		--destructive: #d4183d; /* Red */
-		--destructive-foreground: #ffffff;
-		--border: rgba(0, 0, 0, 0.1);
-		--input: transparent;
-		--input-background: #f3f3f5;
-		--switch-background: #cbced4;
-		--font-weight-medium: 500;
-		--font-weight-normal: 400;
-		--ring: oklch(0.708 0 0); /* Medium grey */
-		--radius: 0.625rem;
-
-		/* Homii Brand Colors - Adjusted to new values */
-		--homii-burnt-orange: #cc5500;
-		--homii-dark-brown: #4a2c2a;
-		--homii-light-peach: #ffeee6;
-		--homii-cream: #fff8f0;
-		--homii-warm-orange: #e67e22;
-		--homii-connection: #f39c12;
-	}
+	/* Removed :root variables and applied colors directly */
 
 	/* Global styles */
 	:global(body) {
 		margin: 0;
 		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 		line-height: 1.6;
-		font-size: var(--font-size);
-		color: var(--foreground);
-		background-color: var(--background);
+		font-size: 14px; /* Keeping the 14px you had in :root */
+		color: #030213; /* Near black foreground */
+		background-color: #ffeee6; /* Homii light peach background for the entire page */
 	}
 
 	.landing-page-container {
@@ -166,7 +135,7 @@
 		justify-content: space-between;
 		align-items: center;
 		padding: 1rem 2rem;
-		background-color: var(--primary);
+		background-color: #030213; /* Very dark blue/black primary */
 		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 		z-index: 100;
 		box-sizing: border-box;
@@ -178,9 +147,8 @@
 	}
 
 	.site-logo-wrapper {
-		/* New wrapper for the logo component */
-		text-decoration: none; /* Remove underline from the anchor */
-		display: inline-block; /* Ensure it takes up minimal space */
+		text-decoration: none;
+		display: inline-block;
 	}
 
 	.main-nav ul {
@@ -192,27 +160,27 @@
 	}
 
 	.main-nav li a {
-		color: var(--primary-foreground);
+		color: #ffeee6; /* Light peach primary-foreground */
 		text-decoration: none;
-		font-weight: var(--font-weight-normal);
+		font-weight: 400; /* Directly set font-weight-normal */
 		transition: color 0.3s ease;
 	}
 
 	.main-nav li a:hover {
-		color: var(--homii-light-peach);
+		color: #fff8f0; /* Homii cream on hover for navigation */
 	}
 
 	.nav-cta {
-		background-color: var(--homii-burnt-orange);
-		color: var(--white) !important;
+		background-color: #cc5500; /* Homii burnt-orange */
+		color: white !important; /* Ensure white text */
 		padding: 0.6rem 1.2rem;
-		border-radius: var(--radius);
+		border-radius: 0.625rem; /* Directly set radius */
 		transition: background-color 0.3s ease;
 	}
 
 	.nav-cta:hover {
-		background-color: var(--homii-warm-orange);
-		color: var(--white) !important;
+		background-color: #e67e22; /* Homii warm-orange */
+		color: white !important;
 	}
 
 	/* Spacer to prevent content from hiding under sticky header */
@@ -224,7 +192,7 @@
 	/* Hero Content Styles */
 	.hero-content {
 		text-align: center;
-		color: var(--foreground);
+		color: #030213; /* Foreground color */
 		padding: 1.5rem;
 		max-width: 900px;
 		box-sizing: border-box;
@@ -233,19 +201,19 @@
 
 	.main-heading {
 		font-size: 3.5rem;
-		font-weight: var(--font-weight-medium);
+		font-weight: 500; /* Directly set font-weight-medium */
 		margin: 0;
 		line-height: 1.15;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		display: inline-block;
-		color: var(--foreground);
+		color: #030213; /* Foreground color */
 	}
 
 	.sub-heading {
 		font-size: 1.5rem;
-		font-weight: var(--font-weight-normal);
+		font-weight: 400; /* Directly set font-weight-normal */
 		margin-top: 1rem;
 		max-width: 700px;
 		margin-left: auto;
@@ -257,11 +225,11 @@
 		margin-top: 2rem;
 		padding: 1rem 2.5rem;
 		font-size: 1.1rem;
-		font-weight: var(--font-weight-medium);
-		color: var(--white);
-		background-color: var(--homii-burnt-orange);
+		font-weight: 500; /* Directly set font-weight-medium */
+		color: white; /* Direct white */
+		background-color: #cc5500; /* Homii burnt-orange */
 		border: none;
-		border-radius: var(--radius);
+		border-radius: 0.625rem; /* Directly set radius */
 		cursor: pointer;
 		transition:
 			background-color 0.3s ease,
@@ -271,7 +239,7 @@
 	}
 
 	.cta-button:hover {
-		background-color: var(--homii-warm-orange);
+		background-color: #e67e22; /* Homii warm-orange */
 		transform: translateY(-2px);
 	}
 
@@ -287,9 +255,9 @@
 
 	.content-section h2 {
 		font-size: 2.8rem;
-		font-weight: var(--font-weight-medium);
+		font-weight: 500; /* Directly set font-weight-medium */
 		margin-bottom: 1.5rem;
-		color: var(--homii-burnt-orange);
+		color: #cc5500; /* Homii burnt-orange */
 	}
 
 	.problem-statement,
@@ -299,32 +267,32 @@
 		max-width: 800px;
 		margin-left: auto;
 		margin-right: auto;
-		color: var(--foreground);
+		color: #030213; /* Foreground color */
 	}
 
 	/* Features Section Specific Styles */
 	.features {
-		background-color: var(--muted);
+		background-color: #fff8f0; /* Homii cream (was muted) */
 		padding: 4rem 2rem;
 		margin: 3rem 0;
-		width: 100%; /* Ensures background spans full width */
+		width: 100%;
 		box-sizing: border-box;
 	}
 
 	.feature-grid {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr); /* Forces 3 columns on one line for larger screens */
+		grid-template-columns: repeat(3, 1fr);
 		gap: 1.5rem;
 		margin-top: 2rem;
-		max-width: 900px; /* Centers the grid content within the full-width section */
+		max-width: 900px;
 		margin-left: auto;
 		margin-right: auto;
 	}
 
 	.feature-card {
-		background-color: var(--background);
+		background-color: #ffeee6; /* Homii light peach (was background) */
 		padding: 2rem;
-		border-radius: var(--radius);
+		border-radius: 0.625rem; /* Directly set radius */
 		box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
 		text-align: left;
 		transition:
@@ -341,31 +309,31 @@
 		font-size: 2.5rem;
 		display: block;
 		margin-bottom: 0.8rem;
-		color: var(--homii-burnt-orange);
+		color: #cc5500; /* Homii burnt-orange */
 	}
 
 	.feature-card h3 {
 		font-size: 1.4rem;
-		font-weight: var(--font-weight-medium);
+		font-weight: 500; /* Directly set font-weight-medium */
 		margin-bottom: 0.6rem;
-		color: var(--foreground);
+		color: #030213; /* Foreground color */
 	}
 
 	.feature-card p {
 		font-size: 0.95rem;
-		color: var(--muted-foreground);
+		color: #717182; /* Muted-foreground color */
 	}
 
 	.launch-cities {
 		font-style: italic;
 		margin-top: 1.5rem;
-		color: var(--muted-foreground);
+		color: #717182; /* Muted-foreground color */
 	}
 
 	/* Responsive Adjustments */
 	@media (max-width: 1024px) {
 		.feature-grid {
-			grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+			grid-template-columns: repeat(2, 1fr);
 		}
 	}
 
@@ -384,7 +352,6 @@
 			height: 7rem;
 		}
 		.site-logo-wrapper {
-			/* Adjust for stacked header */
 			margin-bottom: 0.5rem;
 		}
 
@@ -421,7 +388,7 @@
 		}
 
 		.feature-grid {
-			grid-template-columns: 1fr; /* 1 column on mobile */
+			grid-template-columns: 1fr;
 		}
 
 		.features {
