@@ -369,14 +369,6 @@
 		transform: translateY(-2px);
 	}
 
-	.secondary-cta {
-		background-color: var(--homii-dark-brown);
-	}
-
-	.secondary-cta:hover {
-		background-color: oklch(0.2 0 0);
-	}
-
 	/* Content Section Styles */
 	.content-section {
 		max-width: 900px;
@@ -455,13 +447,6 @@
 
 	.feature-card p {
 		font-size: 0.95rem;
-		color: var(--muted-foreground);
-	}
-
-	.launch-cities {
-		/* Reused for general italic text */
-		font-style: italic;
-		margin-top: 1.5rem;
 		color: var(--muted-foreground);
 	}
 
